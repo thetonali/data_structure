@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Naive",
+      "request": "launch",
+      "mainClass": "MaxPair.Naive",
+      "projectName": "edx_algorithms_76ea75f2"
+    },
+    {
+      "type": "java",
+      "name": "MaxPair",
+      "request": "launch",
+      "mainClass": "MaxPair.MaxPair",
+      "projectName": "edx_algorithms_76ea75f2"
+    },
+    {
+      "type": "java",
+      "name": "Sum",
+      "request": "launch",
+      "mainClass": "Sum",
+      "projectName": "edx_algorithms_76ea75f2"
+    },
+    {
+      "type": "java",
+      "name": "AplusB",
+      "request": "launch",
+      "mainClass": "AplusB",
+      "projectName": "edx_algorithms_76ea75f2"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "e:/Code/edx_algorithms/week3_GreddyAlgorithms",
+      "program": "e:/Code/edx_algorithms/week3_GreddyAlgorithms/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
