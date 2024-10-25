@@ -56,7 +56,7 @@ link* recursive_reverse(link*head){
     //一直递归，找到链表中最后一个节点
     link*new_head=recursive_reverse(head->next);
 
-    //当逐层退出是，new_head的指向都不变，一直指向原链表中最后一个节点；
+    //当逐层退出时，new_head的指向都不变，一直指向原链表中最后一个节点；
     //递归每退出一层，函数中head指针的指向都会发生改变，都指向上一个节点。
 
     //每退出一层，都需要改变head->next节点指针域的指向，同时令head所指节点的指针域为NULL。
