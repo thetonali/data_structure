@@ -9,7 +9,6 @@ int calculate(const char *expression) {
         if (isdigit(*expression)) {
             curnum = curnum * 10 + (*expression - '0');
         } else if (*expression == '+' || *expression == '-' || *expression == '*' || *expression == '/') {
-            // 遇到运算符时，先根据上一个操作符计算
             if (curope == '+') {
                 result += curnum;
             } else if (curope == '-') {
@@ -24,19 +23,16 @@ int calculate(const char *expression) {
                 result /= curnum;
             }
 
-            // 更新当前操作符
             curope = *expression;
             curnum = 0;
         } else {
-            // 非法字符
             printf("ERROR\n");
             return -1;
         }
 
-        expression++;  // 继续处理下一个字符
+        expression++;
     }
 
-    // 最后一个数字和操作符的处理
     if (curope == '+') {
         result += curnum;
     } else if (curope == '-') {
