@@ -1,0 +1,33 @@
+word		times		position
+auto        0            
+break       0            
+case        0            
+char        7            16 51 65 81 88 95 117 
+const       0            
+continue    0            
+default     0            
+do          0            
+double      0            
+else        2            57 59 
+enum        0            
+extern      0            
+float       0            
+for         4            72 99 125 141 
+goto        0            
+if          9            28 34 55 57 67 73 83 103 119 
+int         18           10 17 22 51 51 53 54 72 81 89 99 102 117 125 140 141 146 
+long        0            
+register    0            
+return      5            30 35 56 62 155 
+short       0            
+signed      0            
+sizeof      1            24 
+static      0            
+struct      3            9 11 15 
+switch      0            
+typedef     2            9 15 
+union       0            
+unsigned    0            
+void        6            22 43 65 81 117 140 
+volatile    0            
+while       6            33 44 52 92 97 130 
