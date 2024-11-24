@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define MAX_WORD_LENGTH 20
+#define MAX 20
 #define MAX_LINE 1024
 
-//行结构体，关键字结构体中的存放位置的链表
+//关键字结构体中的存放位置的链表
 typedef struct lineNode {
     int line;
     struct lineNode *next;
@@ -13,7 +13,7 @@ typedef struct lineNode {
 
 //关键字
 typedef struct {
-    char word[MAX_WORD_LENGTH];  //存放关键字名字
+    char word[MAX];              //名字
     int count;                   //关键字出现次数
     LineNode *lines;             //链表——存放出现的位置在哪一行(其实数组也行但大小需要预先确定)
 } Keyword;
@@ -48,7 +48,7 @@ void freeLines(LineNode *head) {
     }
 }
 
-int binary(Keyword keywords[], int low, int high, char *word) {
+int binary(Keyword keywords[], int low, int high, char* word) {
     while (low <= high) {
         int mid = (low + high) / 2;
         int cmp = strcmp(keywords[mid].word, word);
@@ -99,18 +99,16 @@ void processLine(char *filename, Keyword keywords[], int keywordCount) {
             for (int i = 0; word[i]; i++)
                 word[i] = tolower(word[i]);
 
-            int index = binary(keywords, 0, keywordCount - 1, word);
+            int index = binary(keywords, 0, keywordCount-1, word);
             if (index != -1) {
                 keywords[index].count++;
                 //需要修改keywords[index].lines本身的内容，传入其地址，使函数能在其本身进行操作
                 addLine(&keywords[index].lines, lineNum);
             }
-
             word = strtok(NULL, " \t\r\n.,;!?\"'()[]{}<>");
         }
         lineNum++;
     }
-
     fclose(file);
 }
 
@@ -133,7 +131,6 @@ void writeOutput(char *filename, Keyword keywords[], int keywordCount) {
         }
         fprintf(file, "\n");
     }
-
     fclose(file);
 }
 
@@ -151,6 +148,5 @@ int main() {
     writeOutput("output.txt", keywords, 32);
     freeMemory(keywords,32);
 
-    printf("Keyword statistics written to output.txt\n");
     return 0;
 }

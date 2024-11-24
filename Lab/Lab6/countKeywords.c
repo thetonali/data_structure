@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define MAX_WORD_LENGTH 20
+#define MAX 20
 #define MAX_LINE 1024
 
-//行结构体，关键字结构体中的存放位置的链表
+//关键字结构体中的存放位置的链表
 typedef struct lineNode {
     int line;
     struct lineNode *next;
@@ -13,7 +13,7 @@ typedef struct lineNode {
 
 //关键字
 typedef struct {
-    char word[MAX_WORD_LENGTH];  //存放关键字名字
+    char word[MAX];              //名字
     int count;                   //关键字出现次数
     LineNode *lines;             //链表——存放出现的位置在哪一行(其实数组也行但大小需要预先确定)
 } Keyword;
@@ -48,7 +48,7 @@ void freeLines(LineNode *head) {
     }
 }
 
-int binary(Keyword keywords[], int low, int high, char *word) {
+int binary(Keyword keywords[], int low, int high, char* word) {
     while (low <= high) {
         int mid = (low + high) / 2;
         int cmp = strcmp(keywords[mid].word, word);
@@ -144,10 +144,9 @@ int main() {
     Keyword keywords[32]; //关键字数组/结构体数组
 
     initKeywords("keywords.txt", keywords);
-    processLine("novel.txt", keywords, 32);
+    processLine("countKeywords.c", keywords, 32);
     writeOutput("output.txt", keywords, 32);
     freeMemory(keywords,32);
 
-    printf("Keyword statistics written to output.txt\n");
     return 0;
 }

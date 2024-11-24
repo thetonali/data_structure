@@ -63,5 +63,6 @@ pNode EatFood(pNode head,pFood apple){
     Node* newNode;
     if(apple->x==head->x && apple->y==head->y){
         newNode=(Node*)malloc(sizeof(Node));
+        
     }
 }

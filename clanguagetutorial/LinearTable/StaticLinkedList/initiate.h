@@ -5,35 +5,35 @@ typedef struct{
 	int next;
 }component;
 
-//½«½á¹¹ÌåÊı×éÖĞËùÓĞ·ÖÁ¿Á´½Óµ½±¸ÓÃÁ´±í
+//å°†ç»“æ„ä½“æ•°ç»„ä¸­æ‰€æœ‰åˆ†é‡é“¾æ¥åˆ°å¤‡ç”¨é“¾è¡¨
 void reserveArr(component*array);
-//³õÊ¼»¯¾²Ì¬Á´±í
+//åˆå§‹åŒ–é™æ€é“¾è¡¨
 int initArr(component*array);
-//Êä³öº¯Êı
+//è¾“å‡ºå‡½æ•°
 void displayArr(component*array,int body);
-//´Ó±¸ÓÃÁ´±íÉÏÕªÏÂ¿ÕÏĞ½ÚµãµÄº¯Êı
+//ä»å¤‡ç”¨é“¾è¡¨ä¸Šæ‘˜ä¸‹ç©ºé—²èŠ‚ç‚¹çš„å‡½æ•°
 int mallocArr(component*array);
 
 // int main(){
 // 	component array[maxSize];
 // 	int body=initArr(array);
-// 	printf("¾²Ì¬Á´±íÎª£º\n");
+// 	printf("é™æ€é“¾è¡¨ä¸ºï¼š\n");
 // 	displayArr(array,body);
 // 	return 0;
-// }
+// 	}
 	
-//´´½¨±¸ÓÃÁ´±í
+//åˆ›å»ºå¤‡ç”¨é“¾è¡¨
 void reserveArr(component*array){
 	for(int i=0;i<maxSize;i++){
-		array[i].next=i+1;//½«Ã¿¸öÊı×Ö·ÖÁ¿Á´½Óµ½Ò»Æğ
+		array[i].next=i+1;//å°†æ¯ä¸ªæ•°å­—åˆ†é‡é“¾æ¥åˆ°ä¸€èµ·
 		array[i].data=-1;
 	}
-	array[maxSize-1].next=0;//Á´±í×îºóÒ»¸ö½ÚµãµÄÓÎ±êÖµÎª0
+	array[maxSize-1].next=0;//é“¾è¡¨æœ€åä¸€ä¸ªèŠ‚ç‚¹çš„æ¸¸æ ‡å€¼ä¸º0
 }
 
-//ÌáÈ¡·ÖÅä¿Õ¼ä
+//æå–åˆ†é…ç©ºé—´
 int mallocArr(component*array){
-	//Èô±¸ÓÃÁ´±í·Ç¿Õ£¬Ôò·µ»Ø·ÖÅäµÄ½ÚµãÏÂ±ê£»·ñÔò·µ»Ø0£¨µ±·ÖÅä×îºóÒ»¸ö½ÚµãÊ±£¬¸Ã½ÚµãµÄÓÎ±êÖµÎª0£©
+	//è‹¥å¤‡ç”¨é“¾è¡¨éç©ºï¼Œåˆ™è¿”å›åˆ†é…çš„èŠ‚ç‚¹ä¸‹æ ‡ï¼›å¦åˆ™è¿”å›0ï¼ˆå½“åˆ†é…æœ€åä¸€ä¸ªèŠ‚ç‚¹æ—¶ï¼Œè¯¥èŠ‚ç‚¹çš„æ¸¸æ ‡å€¼ä¸º0ï¼‰
 	int i=array[0].next;
 	if(array[0].next){
 		array[0].next=array[i].next;
@@ -41,24 +41,24 @@ int mallocArr(component*array){
 	return i;
 }
 
-//³õÊ¼»¯¾²Ì¬Á´±í
+//åˆå§‹åŒ–é™æ€é“¾è¡¨
 int initArr(component*array){
 	reserveArr(array);
 	int body=mallocArr(array);
-	//ÉùÃ÷Ò»¸ö±äÁ¿£¬°ÑËüµ±Ö¸ÕëÊ¹£¬Ö¸ÏòÁ´±íµÄ×îºóµÄÒ»¸ö½Úµã£¬ÒòÎªÁ´±íÎª¿Õ£¬ËùÒÔÍ·½ÚµãÖØºÏ
+	//å£°æ˜ä¸€ä¸ªå˜é‡ï¼ŒæŠŠå®ƒå½“æŒ‡é’ˆä½¿ï¼ŒæŒ‡å‘é“¾è¡¨çš„æœ€åçš„ä¸€ä¸ªèŠ‚ç‚¹ï¼Œå› ä¸ºé“¾è¡¨ä¸ºç©ºï¼Œæ‰€ä»¥å¤´èŠ‚ç‚¹é‡åˆ
 	int tempBody=body;
 	for(int i=0;i<4;i++){
-		int j=mallocArr(array);//´Ó±¸ÓÃÁ´±íÖĞÄÃ³ö¿ÕÏĞµÄ·ÖÁ¿
-		array[tempBody].next=j;//½«ÉêÇëµÄ¿ÕÏĞ·ÖÁ¿Á´½ÓÔÚÁ´±íµÄ×îºóÒ»¸ö½ÚµãºóÃæ
-		array[j].data=i;//¸øĞÂÉêÇëµÄ·ÖÁ¿µÄÊı¾İÓò³õÊ¼»¯
-		tempBody=j;//½«Ö¸ÏòÁ´±í×îºóÒ»¸ö½ÚµãµÄÖ¸ÕëºóÒÆ
+		int j=mallocArr(array);//ä»å¤‡ç”¨é“¾è¡¨ä¸­æ‹¿å‡ºç©ºé—²çš„åˆ†é‡
+		array[tempBody].next=j;//å°†ç”³è¯·çš„ç©ºé—²åˆ†é‡é“¾æ¥åœ¨é“¾è¡¨çš„æœ€åä¸€ä¸ªèŠ‚ç‚¹åé¢
+		array[j].data=i;//ç»™æ–°ç”³è¯·çš„åˆ†é‡çš„æ•°æ®åŸŸåˆå§‹åŒ–
+		tempBody=j;//å°†æŒ‡å‘é“¾è¡¨æœ€åä¸€ä¸ªèŠ‚ç‚¹çš„æŒ‡é’ˆåç§»
 	}
-	array[tempBody].next=0;//ĞÂµÄÁ´±í×îºóÒ»¸ö½ÚµãµÄÖ¸ÕëÉèÖÃÎª0
+	array[tempBody].next=0;//æ–°çš„é“¾è¡¨æœ€åä¸€ä¸ªèŠ‚ç‚¹çš„æŒ‡é’ˆè®¾ç½®ä¸º0
 	return body;
 }
 
 void displayArr(component*array,int body){
-	int tempBody=body;//×ö±éÀúÊ¹ÓÃ
+	int tempBody=body;//åšéå†ä½¿ç”¨
 	while(array[tempBody].next){
 		printf("%d,%d ",array[tempBody].data,array[tempBody].next);
 		tempBody=array[tempBody].next;

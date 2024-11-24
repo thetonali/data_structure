@@ -13,7 +13,7 @@ typedef struct LineNode {
 } LineNode;
 
 typedef struct {
-    char word[MAX_WORD_LENGTH];
+    char word[MAX];
     int count;
     LineNode *lines;
 } Keyword;
